@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Tugas Harian | SIMPelkerja</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0fdf4;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #2f855a;
+    }
+    form label {
+      display: block;
+      margin-top: 15px;
+      color: #1e4620;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #c6f6d5;
+    }
+    form input[type="file"] {
+      padding: 5px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #2f855a;
+      color: white;
+      font-size: 1em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #276749;
+    }
+    .success-msg {
+      color: green;
+      text-align: center;
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Laporan Tugas Harian</h2>
+    <form id="tugasForm">
+      <label for="tanggal">Tanggal:</label>
+      <input type="date" id="tanggal" name="tanggal" required><label for="waktu">Waktu:</label>
+  <input type="time" id="waktu" name="waktu" required>
+
+  <label for="pekerjaan">Pekerjaan yang Dilakukan:</label>
+  <textarea id="pekerjaan" name="pekerjaan" rows="4" required></textarea>
+
+  <label for="buktiFoto">Upload Foto Bukti:</label>
+  <input type="file" id="buktiFoto" name="buktiFoto" accept="image/*" required>
+
+  <button type="submit">Kirim Laporan</button>
+</form>
+<div class="success-msg" id="successMsg">Laporan berhasil dikirim!</div>
+
+  </div>  <script>
+    document.getElementById("tugasForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("successMsg").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("successMsg").style.display = "none";
+        document.getElementById("tugasForm").reset();
+      }, 3000);
+    });
+  </script></body>
+</html>
