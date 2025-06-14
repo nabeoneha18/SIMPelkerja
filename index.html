@@ -48,45 +48,52 @@
       text-align: center;
       margin-top: 10px;
     }
+    .links {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .links a {
+      color: #2f855a;
+      text-decoration: none;
+      font-size: 0.9em;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
- <div class="login-container">
+  <div class="login-container">
     <h2>Login SIMPelkerja</h2>
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-    <p class="error" id="errorMsg">Email atau password salah!</p>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Masuk</button>
+    </form>
+    <div class="error" id="errorMsg"></div>
+
+    <div class="links">
+      <a href="register.html">Daftar akun baru</a> |
+      <a href="forgot.html">Lupa password?</a>
+    </div>
   </div>
 
   <script>
-    function login() {
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
-if (email === "admin@msjoko.com" && password === "admin123") {
-        window.location.href = "beranda.html";
+
+      // Ambil data akun dari localStorage
+      const akun = JSON.parse(localStorage.getItem("akun"));
+
+      if (akun && email === akun.email && password === akun.password) {
+        window.location.href = "index.html"; // ke Beranda
       } else {
-        document.getElementById("errorMsg").style.display = "block";
+        document.getElementById("errorMsg").innerText = "Email atau password salah!";
       }
-    }
-    
-    <p>
-  <a href="register.html">Daftar akun baru</a> | 
-  <a href="forgot.html">Lupa password?</a>
-</p>
-
-  <script>
-    function login(event) {
-  event.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  if (email === "asrul2344@gmail.com" && password === "Asrul123") {
-    window.location.href = "beranda.html";
-  } else {
-    alert("Email atau password salah!");
-  }
-}
+    });
   </script>
 </body>
 </html>
