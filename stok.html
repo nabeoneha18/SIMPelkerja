@@ -1,109 +1,102 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stok Bahan | SIMPelkerja</title>
+  <meta charset="UTF-8">
+  <title>Manajemen Stok | SIMPelkerja</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f0fdf4;
-      margin: 0;
+      background-color: #f0fff4;
       padding: 20px;
-      color: #2f855a;
-    }
-    .container {
-      max-width: 800px;
-      margin: 30px auto;
-      background-color: #ffffff;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     h1 {
       text-align: center;
-      color: #276749;
+      color: #2f855a;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 25px;
+      margin-top: 30px;
     }
     th, td {
-      padding: 12px;
       border: 1px solid #c6f6d5;
+      padding: 12px;
       text-align: left;
     }
     th {
-      background-color: #f0fff4;
+      background-color: #2f855a;
+      color: white;
     }
-    .danger {
+    .warning {
       color: red;
       font-weight: bold;
     }
-    .button {
-      background-color: #2f855a;
-      color: white;
-      padding: 8px 16px;
+    .action-link {
       text-decoration: none;
-      border-radius: 6px;
+      color: #2b6cb0;
+      font-weight: bold;
     }
-    .button:hover {
-      background-color: #276749;
+    .action-link:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Data Stok Bahan</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Nama Bahan</th>
-          <th>Stok Saat Ini</th>
-          <th>Status</th>
-          <th>Aksi</th>
-        </tr>
-      </thead>
-      <tbody id="stokTable">
-        <!-- Data ditambahkan lewat JavaScript -->
-      </tbody>
-    </table>
-  </div>
-
-  <script>
-    const bahanList = [
-      { nama: "Tepung Terigu", key: "stok_tepung_terigu", link: "tepung-terigu.html" },
-      { nama: "Tepung Tapioka", key: "stok_tepung_tapioka", link: "tepung-tapioka.html" },
-      { nama: "Bubuk Mesiu", key: "stok_bubuk_mesiu", link: "bubuk-mesiu.html" },
-      { nama: "Garam", key: "stok_garam", link: "garam.html" },
-      { nama: "Gula", key: "stok_gula", link: "gula.html" },
-      { nama: "Penyedap Rasa", key: "stok_penyedap", link: "penyedap-rasa.html" },
-      { nama: "Bawang Putih", key: "stok_bawang_putih", link: "bawang-putih.html" },
-      { nama: "Tepung Sagu", key: "stok_tepung_sagu", link: "tepung-sagu.html" }
-    ];
-
-    const stokTable = document.getElementById("stokTable");
-
-    function tampilkanData() {
-      stokTable.innerHTML = "";
-      bahanList.forEach(bahan => {
-        const data = JSON.parse(localStorage.getItem(bahan.key)) || [];
-        const stokTerbaru = data.length > 0 ? parseFloat(data[data.length - 1].jumlah) : 0;
-        const status = stokTerbaru < 5 ? "<span class='danger'>⚠ Stok Menipis</span>" : "Aman";
-
-        const row = `
-          <tr>
-            <td>${bahan.nama}</td>
-            <td>${stokTerbaru} kg</td>
-            <td>${status}</td>
-            <td><a class="button" href="${bahan.link}">Lihat Detail</a></td>
-          </tr>`;
-        stokTable.innerHTML += row;
-      });
-    }
-
-    window.onload = tampilkanData;
-  </script>
+  <h1>Manajemen Stok Bahan</h1>
+  <table>
+    <tr>
+      <th>Nama Bahan</th>
+      <th>Jumlah</th>
+      <th>Status</th>
+      <th>Aksi</th>
+    </tr>
+    <tr>
+      <td>Tepung Terigu</td>
+      <td>4 kg</td>
+      <td class="warning">Stok Rendah</td>
+      <td><a href="stok_tepung_terigu.html" class="action-link">Lihat Detail</a></td>
+    </tr>
+    <tr>
+      <td>Tepung Tapioka</td>
+      <td>6 kg</td>
+      <td>-</td>
+      <td><a href="stok_tepung_tapioka.html" class="action-link">Lihat Detail</a></td>
+    </tr>
+    <tr>
+      <td>Bubuk Mesiu</td>
+      <td>3 kg</td>
+      <td class="warning">Stok Rendah</td>
+      <td><a href="stok-bubuk-mesiu.html" class="action-link">Lihat Detail</a></td>
+    </tr>
+    <tr>
+      <td>Garam</td>
+      <td>8 kg</td>
+      <td>-</td>
+      <td><a href="stok-garam.html" class="action-link">Lihat Detail</a></td>
+    </tr>
+    <tr>
+      <td>Gula</td>
+      <td>5 kg</td>
+      <td class="warning">Stok Rendah</td>
+      <td><a href="stok-gula.html" class="action-link">Lihat Detail</a></td>
+    </tr>
+    <tr>
+      <td>Penyedap Rasa</td>
+      <td>9 kg</td>
+      <td>-</td>
+      <td><a href="stok-penyedap-rasa.html" class="action-link">Lihat Detail</a></td>
+    </tr>
+    <tr>
+      <td>Bawang Putih</td>
+      <td>4 kg</td>
+      <td class="warning">Stok Rendah</td>
+      <td><a href="stok-bawang-putih.html" class="action-link">Lihat Detail</a></td>
+    </tr>
+    <tr>
+      <td>Tepung Sagu</td>
+      <td>10 kg</td>
+      <td>-</td>
+      <td><a href="stok-tepung-sagu.html" class="action-link">Lihat Detail</a></td>
+    </tr>
+  </table>
 </body>
-</html>
+</html><!-- Selanjutnya, file seperti stok-tepung-terigu.html, stok-gula.html, dll akan dibuat terpisah. Aku akan langsung buatin semua file itu juga. -->
