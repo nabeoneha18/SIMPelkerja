@@ -51,14 +51,25 @@
   </style>
 </head>
 <body>
-  <div class="login-container">
+ <div class="login-container">
     <h2>Login SIMPelkerja</h2>
-    <form id="loginForm">
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit">Masuk</button>
-    </form>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p class="error" id="errorMsg">Email atau password salah!</p>
+  </div>
 
+  <script>
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+if (email === "admin@msjoko.com" && password === "admin123") {
+        window.location.href = "beranda.html";
+      } else {
+        document.getElementById("errorMsg").style.display = "block";
+      }
+    }
+    
     <p>
   <a href="register.html">Daftar akun baru</a> | 
   <a href="forgot.html">Lupa password?</a>
