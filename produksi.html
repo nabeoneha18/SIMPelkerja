@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Produksi | SIMPelkerja</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0fdf4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2f855a;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #c6f6d5;
+    }
+    th {
+      background-color: #2f855a;
+      color: white;
+    }
+    .btn {
+      background-color: #2f855a;
+      color: white;
+      padding: 8px 14px;
+      text-decoration: none;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #276749;
+    }
+    .form-section, .detail-section {
+      margin-top: 40px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: none;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="text"], input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #c6f6d5;
+      color: #2f855a;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Data Produksi Harian</h1>
+
+  <button class="btn" onclick="toggleForm()">+ Tambah Data Produksi</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Hari</th>
+        <th>Tanggal</th>
+        <th>Penanggung Jawab</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Senin</td>
+        <td>10 Juni 2025</td>
+        <td>Asrul</td>
+        <td><button class="btn" onclick="showDetail('Senin', '10 Juni 2025', 'Asrul', 'Memantau mesin penggorengan')">Lihat Detail</button></td>
+      </tr>
+      <!-- Tambah baris lagi di sini jika perlu -->
+    </tbody>
+  </table>
+
+  <!-- Form Tambah -->
+  <div class="form-section" id="formSection">
+    <h2>Tambah Data Produksi</h2>
+    <label>Hari:</label>
+    <input type="text" placeholder="Contoh: Selasa" />
+    
+    <label>Tanggal:</label>
+    <input type="date" />
+    
+    <label>Penanggung Jawab:</label>
+    <input type="text" placeholder="Nama penanggung jawab" />
+    
+    <label>Deskripsi Tugas Hari Ini:</label>
+    <input type="text" placeholder="Misal: Cek stok bahan baku" />
+    
+    <label>Upload Foto:</label>
+    <input type="file" />
+
+    <br><br>
+    <button class="btn">Simpan</button>
+    <a href="#" class="back-link" onclick="toggleForm()">Batal</a>
+  </div>
+
+  <!-- Detail Produksi -->
+  <div class="detail-section" id="detailSection">
+    <h2>Detail Produksi</h2>
+    <p><strong>Hari:</strong> <span id="detailHari"></span></p>
+    <p><strong>Tanggal:</strong> <span id="detailTanggal"></span></p>
+    <p><strong>Penanggung Jawab:</strong> <span id="detailPJ"></span></p>
+    <p><strong>Deskripsi:</strong> <span id="detailTugas"></span></p>
+    <a href="#" class="back-link" onclick="hideDetail()">← Kembali</a>
+  </div>
+
+  <script>
+    function toggleForm() {
+      const form = document.getElementById("formSection");
+      form.style.display = (form.style.display === "block") ? "none" : "block";
+    }
+
+    function showDetail(hari, tanggal, pj, tugas) {
+      document.getElementById("detailHari").innerText = hari;
+      document.getElementById("detailTanggal").innerText = tanggal;
+      document.getElementById("detailPJ").innerText = pj;
+      document.getElementById("detailTugas").innerText = tugas;
+      document.getElementById("detailSection").style.display = "block";
+    }
+
+    function hideDetail() {
+      document.getElementById("detailSection").style.display = "none";
+    }
+  </script>
+</body>
+</html>
