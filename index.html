@@ -58,23 +58,24 @@
       <input type="password" id="password" placeholder="Password" required>
       <button type="submit">Masuk</button>
     </form>
-    <div class="error" id="errorMsg"></div>
-  </div>
+
+    <p>
+  <a href="register.html">Daftar akun baru</a> | 
+  <a href="forgot.html">Lupa password?</a>
+</p>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+    function login(event) {
+  event.preventDefault();
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      // Dummy login (sementara)
-      if (email === "asrul2344@gmail.com" && password === "Asrul123") {
-        window.location.href = "beranda.html"; // Masuk ke Beranda
-      } else {
-        document.getElementById("errorMsg").innerText = "Email atau password salah!";
-      }
-    });
+  if (email === "asrul2344@gmail.com" && password === "Asrul123") {
+    window.location.href = "beranda.html";
+  } else {
+    alert("Email atau password salah!");
+  }
+}
   </script>
 </body>
 </html>
